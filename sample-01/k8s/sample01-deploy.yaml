@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: pytest
-  name: pytest
+    app: sample-01
+  name: sample-01
   namespace: default
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: pytest
+      app: sample-01
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -18,11 +18,11 @@ spec:
   template:
     metadata:
       labels:
-        app: pytest
+        app: sample-01
     spec:
       containers:
-      - image: docker.io/irvnet/test-python:DOCKERHUB
-        imagePullPolicy: Never
+      - image: docker.io/irvnet/sample-01:v01
+        imagePullPolicy: Always
         name: nginx
         resources: {}
         terminationMessagePath: /dev/termination-log
